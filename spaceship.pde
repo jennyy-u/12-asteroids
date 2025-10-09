@@ -10,7 +10,7 @@ class Spaceship { //class names are usually capitalized
   Spaceship() {
     loca = new PVector(width/2, height/2);
     velo = new PVector(0, 0);
-    direct = new PVector(1, 0);
+    direct = new PVector(0, -1);
   }
 
 
@@ -19,6 +19,7 @@ class Spaceship { //class names are usually capitalized
   void show() {
     pushMatrix();
     translate(loca.x, loca.y);
+    rotate(direct.heading());
     drawShip();
     popMatrix();
   }
@@ -27,18 +28,35 @@ class Spaceship { //class names are usually capitalized
     stroke(white);
     fill(black);
     strokeWeight(2);
-    rect(0, 0, 40, 20);
-    triangle(20, -10, 20, 10, 30, 0);
-    circle(3, 0, 8);
+    triangle(13, -10, 13, 10, 28, 0);
+    rect(-7, 0, 40, 20);
+    quad(-37, -7, -27, -15, -15, -14, -15, -7);
+    quad(-37, 7, -27, 15, -15, 14, -15, 7);
+    strokeWeight(1);
+    rect(-30, -3, -2, 2);
+    rect(-30, 3, -2, 2);
+    circle(0, 0, 12);
+    circle(0, 0, 6);
+    strokeWeight(2);
   }
 
   void act() {
+    if (loca.x < -20) loca.x = 820;
+    if (loca.x > 820) loca.x = -20;
+    if (loca.y < -20) loca.y = 620;
+    if (loca.y > 620) loca.y = -20;
+
     move();
     shoot();
     checkCollisions();
   }
 
   void move() {
+    loca.add(velo);
+    if (upKey) velo.add(direct);
+    if (downKey) velo.sub(direct);
+    if (leftKey) direct.rotate(-radians(2));
+    if (rightKey) direct.rotate(radians(2));
   }
   void shoot() {
   }

@@ -41,7 +41,7 @@ void setup() {
   //gravity = new PVector(0, 1);
 }
 
-
+//speed limit, accel decel
 
 void draw() {
   if (mode == INTRO) intro();
