@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 //jenny yu
 //block 1-4
-//october
+//october 7, 2025
 
 //colour palette
 color black = #000000;
@@ -15,24 +17,25 @@ final int GAMEOVER = 3;
 int mode = INTRO;
 
 //keyboard
-boolean upKey, downKey, leftKey, rightKey;
-
-//PVector loca;
-//PVector velo;
-//PVector gravity;
-
-//float d;
+boolean upKey, downKey, leftKey, rightKey, spaceKey;
 
 
 //game objects
 Spaceship player1;
 
+
+//list of bullets
+ArrayList<GameObject> objects;
+
+
 void setup() {
   size(800, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
-
+  
+  objects = new ArrayList();
   player1 = new Spaceship();
+  objects.add(player1);
 
   //loca = new PVector(width/2, height/2);
   //d = 100;
@@ -41,9 +44,10 @@ void setup() {
   //gravity = new PVector(0, 1);
 }
 
-//speed limit, accel decel
+
 
 void draw() {
+  println(objects.size());
   if (mode == INTRO) intro();
   else if (mode == GAME) game();
   else if (mode == PAUSE) pause();

@@ -1,16 +1,13 @@
-class Spaceship { //class names are usually capitalized
+class Spaceship extends GameObject{
 
   //instance variables
-  PVector loca;      //location
-  PVector velo;      //velocity
   PVector direct;    //direction
 
 
   //constructor
   Spaceship() {
-    loca = new PVector(width/2, height/2);
-    velo = new PVector(0, 0);
-    direct = new PVector(0, -1);
+    super(width/2, height/2, 0, 0);
+    direct = new PVector(0, -0.1);
   }
 
 
@@ -41,10 +38,10 @@ class Spaceship { //class names are usually capitalized
   }
 
   void act() {
-    if (loca.x < -20) loca.x = 820;
-    if (loca.x > 820) loca.x = -20;
-    if (loca.y < -20) loca.y = 620;
-    if (loca.y > 620) loca.y = -20;
+    if (loca.x < -20) loca.x = width+20;
+    if (loca.x > width+20) loca.x = -20;
+    if (loca.y < -20) loca.y = height+20;
+    if (loca.y > height+20) loca.y = -20;
 
     move();
     shoot();
@@ -52,13 +49,15 @@ class Spaceship { //class names are usually capitalized
   }
 
   void move() {
-    loca.add(velo);
+    loca.add(velo); //movement
+    velo.setMag(min(velo.mag(), 10)); //speed limit
     if (upKey) velo.add(direct);
     if (downKey) velo.sub(direct);
     if (leftKey) direct.rotate(-radians(2));
     if (rightKey) direct.rotate(radians(2));
   }
   void shoot() {
+    if (spaceKey) objects.add(new Bullet() );
   }
   void checkCollisions() {
   }
