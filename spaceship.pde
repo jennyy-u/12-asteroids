@@ -1,18 +1,19 @@
-class Spaceship extends GameObject{
+class Spaceship extends GameObject {
 
   //instance variables
   PVector direct;    //direction
+  int cooldown;
 
 
   //constructor
   Spaceship() {
     super(width/2, height/2, 0, 0);
     direct = new PVector(0, -0.1);
+    cooldown = 0;
   }
 
 
   //behaviour functions
-
   void show() {
     pushMatrix();
     translate(loca.x, loca.y);
@@ -38,14 +39,10 @@ class Spaceship extends GameObject{
   }
 
   void act() {
-    if (loca.x < -20) loca.x = width+20;
-    if (loca.x > width+20) loca.x = -20;
-    if (loca.y < -20) loca.y = height+20;
-    if (loca.y > height+20) loca.y = -20;
-
     move();
     shoot();
     checkCollisions();
+    wrapAround();
   }
 
   void move() {
@@ -55,10 +52,17 @@ class Spaceship extends GameObject{
     if (downKey) velo.sub(direct);
     if (leftKey) direct.rotate(-radians(2));
     if (rightKey) direct.rotate(radians(2));
+    velo.limit(10);
   }
+  
   void shoot() {
-    if (spaceKey) objects.add(new Bullet() );
+    cooldown--;
+    if (spaceKey && cooldown <= 0) {
+      objects.add(new Bullet() );
+      cooldown = 30;
+    }
   }
+  
   void checkCollisions() {
   }
 }

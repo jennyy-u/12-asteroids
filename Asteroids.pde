@@ -36,12 +36,8 @@ void setup() {
   objects = new ArrayList();
   player1 = new Spaceship();
   objects.add(player1);
+  objects.add(new Asteroid());
 
-  //loca = new PVector(width/2, height/2);
-  //d = 100;
-  //velo = new PVector(5, 0);
-  //velo.rotate(random (0, 2*PI));
-  //gravity = new PVector(0, 1);
 }
 
 
