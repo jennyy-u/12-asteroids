@@ -1,7 +1,7 @@
 class Asteroid extends GameObject {
 
   //instance variables
-  PShape asteroid;
+  PVector ast;
   float rotSpeed, angle;
 
   //constructor
@@ -13,7 +13,6 @@ class Asteroid extends GameObject {
     d = lives*40;
     rotSpeed = random(-2, 2);
     angle = 0;
-    asteroid = createShape(RECT, loca.x, loca.y, 80, 80);
   }
 
 
@@ -25,7 +24,6 @@ class Asteroid extends GameObject {
     d = lives*35;
     rotSpeed = random(-2, 2);
     angle = 0;
-    asteroid = createShape(RECT, loca.x, loca.y, 80, 80);
   }
 
 
@@ -37,11 +35,18 @@ class Asteroid extends GameObject {
     strokeWeight(3);
     stroke(white);
     fill(black);
+    //circle(loca.x, loca.y, d);
     pushMatrix();
     //translate(loca.x, loca.y);
-    //circle(loca.x, loca.y, d);
-    shape(asteroid, loca.x, loca.y);
-    line(loca.x, loca.y, loca.x+d/2, loca.y);
+    beginShape();
+    //while() {
+     //rotate
+     
+      
+      
+    //}
+    
+    endShape();
     popMatrix();
   }
 
@@ -68,11 +73,7 @@ class Asteroid extends GameObject {
       i++;
     }
   }
-  
+
   void asteroidS() {
-    
-    
-    
   }
-  
 }

@@ -43,6 +43,7 @@ void setup() {
   player1 = new Spaceship();
   objects.add(player1);
   objects.add(new Asteroid());
+  objects.add(new UFO());
   
   //font
   vectroid = createFont("Vectroid.otf", 50);
