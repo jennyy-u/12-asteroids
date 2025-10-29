@@ -3,6 +3,7 @@ class Asteroid extends GameObject {
   //instance variables
   PVector ast;
   float rotSpeed, angle;
+  float size;
 
   //constructor
   Asteroid() {
@@ -11,6 +12,7 @@ class Asteroid extends GameObject {
     velo.rotate(random(TWO_PI));
     lives = 3;
     d = lives*40;
+    size = 0.7;
     rotSpeed = random(-2, 2);
     angle = 0;
   }
@@ -22,6 +24,7 @@ class Asteroid extends GameObject {
     velo.rotate(random(TWO_PI));
     lives = life;
     d = lives*35;
+    size = 0.5;
     rotSpeed = random(-2, 2);
     angle = 0;
   }
@@ -33,20 +36,21 @@ class Asteroid extends GameObject {
 
   void show() {
     strokeWeight(3);
-    stroke(white);
+    stroke(silver);
     fill(black);
-    //circle(loca.x, loca.y, d);
     pushMatrix();
-    //translate(loca.x, loca.y);
+    translate(loca.x, loca.y);
+    scale(size);
     beginShape();
-    //while() {
-     //rotate
-     
-      
-      
-    //}
-    
+    ast = new PVector(100, 0);
+    int a = 0;
+    while (a < 13) {
+      vertex(ast.x + random(1, 3), ast.y + random(1, 3));
+      ast.rotate(radians(360/12));
+      a++;
+    }
     endShape();
+    //circle(loca.x, loca.y, 30);
     popMatrix();
   }
 
@@ -68,12 +72,14 @@ class Asteroid extends GameObject {
           objects.add(new Asteroid(loca.x, loca.y, lives-1));
           lives = 0;
           obj.lives = 0;
+          int pi = 0;
+          while (pi < 15) {
+            objects.add(new Particle(loca.x, loca.y, random(-1, 1), random(-1, 1)));
+            pi++;
+          }
         }
       }
       i++;
     }
-  }
-
-  void asteroidS() {
   }
 }

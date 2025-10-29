@@ -40,6 +40,7 @@ class Spaceship extends GameObject {
 
   void act() {
     move();
+    thrustParticle();
     shoot();
     checkCollisions();
     wrapAround();
@@ -54,7 +55,7 @@ class Spaceship extends GameObject {
     if (rightKey) direct.rotate(radians(2));
     velo.limit(10);
   }
-  
+
   void shoot() {
     cooldown--;
     if (spaceKey && cooldown <= 0) {
@@ -62,7 +63,17 @@ class Spaceship extends GameObject {
       cooldown = 30;
     }
   }
-  
+
+  void thrustParticle() {
+    if (upKey) {
+      int tpi = 0;
+      while (tpi < 1) {
+        objects.add(new Particle(loca.x, loca. y, direct.copy(), red));
+        tpi++;
+      }
+    }
+  }
+
   void checkCollisions() {
   }
 }

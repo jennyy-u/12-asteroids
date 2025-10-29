@@ -6,7 +6,7 @@ void intro() {
   //game title
   textFont(halo);
   fill(white);
-  textSize(100);
+  textSize(90);
   text("ASTEROID", width/2, 250);
 
   //start button
