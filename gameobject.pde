@@ -10,7 +10,7 @@ class GameObject {
   GameObject(float lx, float ly, float vx, float vy) {
     loca = new PVector(lx, ly);
     velo = new PVector(vx, vy);
-    lives = 1;
+    lives = 5;
   }
 
   GameObject(PVector l, PVector v) {

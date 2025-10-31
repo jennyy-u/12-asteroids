@@ -73,10 +73,17 @@ class Asteroid extends GameObject {
           lives = 0;
           obj.lives = 0;
           int pi = 0;
-          while (pi < 15) {
+          while (pi < 20) {
             objects.add(new Particle(loca.x, loca.y, random(-1, 1), random(-1, 1)));
             pi++;
           }
+        }
+      }
+      if (obj instanceof Spaceship) {
+        if (dist(loca.x, loca.y, player1.loca.x, player1.loca.y) < d/2 + player1.d/2) {
+          player1.lives--;
+          lives = 0;
+          //shield- 
         }
       }
       i++;

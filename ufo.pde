@@ -19,6 +19,8 @@ class UFO extends GameObject {
 
 
   void act() {
+    
+    
   }
 
 

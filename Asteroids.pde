@@ -17,6 +17,7 @@ color red = #d35057;
 //font variables
 PFont vectroid;
 PFont halo;
+PFont tokyo;
 
 
 //mode framework
@@ -27,7 +28,7 @@ final int GAMEOVER = 3;
 int mode = INTRO;
 
 //keyboard
-boolean upKey, downKey, leftKey, rightKey, spaceKey, altKey;
+boolean upKey, downKey, leftKey, rightKey, spaceKey, altKey, zKey;
 
 
 //game objects
@@ -38,22 +39,29 @@ Asteroid asteroid;
 //list of bullets
 ArrayList<GameObject> objects;
 
-
+//timing of asteroids
+float wait;
 
 void setup() {
   size(800, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
+  
+  wait = random(600);
 
   objects = new ArrayList();
   player1 = new Spaceship();
   objects.add(player1);
+  objects.add(new Asteroid());
+  asteroid = new Asteroid();
+  wait = random(600);
   objects.add(new Asteroid());
   objects.add(new UFO());
 
   //font
   vectroid = createFont("Vectroid.otf", 50);
   halo = createFont("HALO____.TTF", 50);
+  tokyo = createFont("Tokyo.ttf", 50);
 }
 
 

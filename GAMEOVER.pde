@@ -2,10 +2,11 @@ button restartButton;
 
 void gameover() {
   background(black);
-
-
+  
+  
   //restart game button
-  restartButton = new button("play again", width/2, 400, 200, 100, white, silver);
+  textFont(vectroid);
+  restartButton = new button("play again", width/2, 400, 260, 100, white, silver);
   click();
   restartButton.show();
   gameoverClicks();
@@ -14,6 +15,6 @@ void gameover() {
 
 void gameoverClicks() {
   if (restartButton.clicked) {
-    mode = GAME;
+    mode = INTRO;
   }
 }
