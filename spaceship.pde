@@ -4,6 +4,7 @@ class Spaceship extends GameObject {
   PVector direct;    //direction
   int cooldownB;
   int cooldownT;
+  int cooldownS;
 
 
   //constructor
@@ -12,7 +13,8 @@ class Spaceship extends GameObject {
     direct = new PVector(0, -0.1);
     cooldownB = 0;
     cooldownT = 0;
-    lives = 5;
+    cooldownS = 0;
+    lives = 3;
   }
 
 
@@ -23,6 +25,14 @@ class Spaceship extends GameObject {
     rotate(direct.heading());
     drawShip();
     popMatrix();
+    cooldownS--;
+    if (cooldownS > 0) {
+      //shield
+      strokeWeight(2);
+      stroke(blue);
+      noFill();
+      circle(player1.loca.x, player1.loca.y, 100);
+    }
   }
 
   void drawShip() {
@@ -45,7 +55,6 @@ class Spaceship extends GameObject {
     move();
     thrustParticle();
     shoot();
-    checkCollisions();
     wrapAround();
     teleport();
 
@@ -56,7 +65,10 @@ class Spaceship extends GameObject {
     text("lives:", 50, 40);
     text(lives, 90, 40);
 
-    if (lives == 0) mode = GAMEOVER;
+    if (lives == 0) {
+      mode = GAMEOVER;
+      gameoverLose();
+    }
   }
 
   void move() {
@@ -85,10 +97,6 @@ class Spaceship extends GameObject {
         tpi++;
       }
     }
-  }
-
-  void checkCollisions() {
-    
   }
 
 

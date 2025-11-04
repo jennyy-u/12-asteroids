@@ -31,9 +31,6 @@ class Asteroid extends GameObject {
 
 
 
-
-
-
   void show() {
     strokeWeight(3);
     stroke(silver);
@@ -50,7 +47,6 @@ class Asteroid extends GameObject {
       a++;
     }
     endShape();
-    //circle(loca.x, loca.y, 30);
     popMatrix();
   }
 
@@ -80,13 +76,20 @@ class Asteroid extends GameObject {
         }
       }
       if (obj instanceof Spaceship) {
-        if (dist(loca.x, loca.y, player1.loca.x, player1.loca.y) < d/2 + player1.d/2) {
+        if (player1.cooldownS < 0 && dist(loca.x, loca.y, player1.loca.x, player1.loca.y) < d/2 + player1.d/2) {
           player1.lives--;
-          lives = 0;
-          //shield- 
+          player1.cooldownS = 120;
+          //lives = 0;
         }
       }
       i++;
     }
   }
 }
+
+/*
+if (cooldownS < 0) {
+  shield();
+  cooldownS = 120;
+}
+*/

@@ -13,12 +13,10 @@ color blue = #90d5ff;
 color pink = #ffd1dc;
 color red = #d35057;
 
-
 //font variables
 PFont vectroid;
 PFont halo;
 PFont tokyo;
-
 
 //mode framework
 final int INTRO = 0;
@@ -34,6 +32,7 @@ boolean upKey, downKey, leftKey, rightKey, spaceKey, altKey, zKey;
 //game objects
 Spaceship player1;
 Asteroid asteroid;
+Bullet bullets;
 
 
 //list of bullets
