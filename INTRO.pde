@@ -15,6 +15,10 @@ void intro() {
   click();
   startButton.show();
   introClicks();
+
+
+  //reset game
+  
 }
 
 

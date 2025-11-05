@@ -3,30 +3,41 @@ button restartButton;
 void gameover() {
   background(black);
 
-
-  //restart game button
-  textFont(vectroid);
-  restartButton = new button("play again", width/2, 400, 260, 100, white, silver);
+  //play again button
   click();
+  
+  textFont(vectroid);
+  restartButton = new button("play again", width/2, 400, 240, 80, white, silver);
   restartButton.show();
   gameoverClicks();
 
-  //if () gameoverWin();
+  if (player1.lives == 0) {
+    gameoverLose();
+  } 
+  
+  //count points for each asteroid destroyed
+  else if (player1.lives >= 0 && asteroid.astPoint == 1) {
+    gameoverWin();
+  }
 }
 
 
 void gameoverClicks() {
   if (restartButton.clicked) {
-    mode = GAME;
+    mode = INTRO;
     player1.loca.x = width/2;
     player1.loca.y = height/2;
   }
 }
 
 void gameoverWin() {
+  textFont(vectroid);
+  textSize(80);
+  text("you win", width/2, height/3);
 }
 
 void gameoverLose() {
   textFont(vectroid);
+  textSize(80);
   text("you lose", width/2, height/3);
 }

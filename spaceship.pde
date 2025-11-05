@@ -103,9 +103,20 @@ class Spaceship extends GameObject {
   void teleport() {
     cooldownT--;
     if (zKey) {
-      player1.loca.x = random(width);
-      player1.loca.y = random(height);
-      direct.rotate(radians(random(2*PI)));
+      int i = 0;
+      while (i < objects.size()) {
+        player1.loca.x = random(width);
+        player1.loca.x = random(height);
+        direct.rotate(radians(random(2*PI)));
+        GameObject obj = objects.get(i);
+        if (obj instanceof Asteroid) {
+          if (dist(player1.loca.x, player1.loca.y, obj.loca.x, obj.loca.y) < d+100 + obj.d+100) {
+            player1.loca.x = random(width);
+            player1.loca.y = random(height);
+          }
+        }
+        i++;
+      }
       cooldownT = 240;
     }
   }
