@@ -33,29 +33,39 @@ boolean upKey, downKey, leftKey, rightKey, spaceKey, altKey, zKey;
 Spaceship player1;
 Asteroid asteroid;
 Bullet bullets;
+UFO ufo;
 
 
 //list of bullets
 ArrayList<GameObject> objects;
 
 //timing of asteroids
-float wait;
+float wait = 120;
 
 void setup() {
   size(800, 600);
   textAlign(CENTER, CENTER);
   rectMode(CENTER);
   
-  wait = random(600);
 
   objects = new ArrayList();
   player1 = new Spaceship();
   objects.add(player1);
   objects.add(new Asteroid());
   asteroid = new Asteroid();
-  wait = random(600);
   objects.add(new Asteroid());
   objects.add(new UFO());
+  
+  /*
+  pushMatrix();
+  wait--;
+  if (wait <= 0) {
+    objects.add(new UFO());
+    wait = 120;
+  }
+  popMatrix();
+  */
+
 
   //font
   vectroid = createFont("Vectroid.otf", 50);

@@ -1,17 +1,17 @@
 class UFO extends GameObject {
 
   //instance variables
-
+  int time = 1000;
+  
   //constructor
-
   UFO() {
-    super(random(width), random(height), 0, 0);
+    super(random(width), random(height), 2, 2);
+    velo.setMag(random(1, 3));
   }
 
 
 
   void show() {
-
     pushMatrix();
     drawUFO();
     popMatrix();
@@ -19,7 +19,8 @@ class UFO extends GameObject {
 
 
   void act() {
-    
+    loca.add(velo);
+    velo.limit(10);
     
   }
 

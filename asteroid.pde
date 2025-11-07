@@ -76,10 +76,13 @@ class Asteroid extends GameObject {
           objects.add(new Asteroid(loca.x, loca.y, lives-1));
           objects.add(new Asteroid(loca.x, loca.y, lives-1));
           lives = 0;
-
           obj.lives = 0;
-          if (obj.lives == 0) astPoint++;
-          if (astPoint == 1) mode = GAMEOVER;
+          //if (obj.lives == 0) {
+            //astPoint++;
+          //}
+          if (astPoint == 2) {
+            mode = GAMEOVER;
+          }
           int pi = 0;
           while (pi < 20) {
             objects.add(new Particle(loca.x, loca.y, random(-1, 1), random(-1, 1)));

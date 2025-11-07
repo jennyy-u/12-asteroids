@@ -16,7 +16,7 @@ void gameover() {
   } 
   
   //count points for each asteroid destroyed
-  else if (player1.lives >= 0 && asteroid.astPoint == 1) {
+  else if (player1.lives >= 0 && asteroid.astPoint == 2) {
     gameoverWin();
   }
 }
